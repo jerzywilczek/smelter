@@ -1,0 +1,44 @@
+name: "vk-video: Feature request"
+description: Propose a new feature or improvement for the vk-video crate.
+labels: ["enhancement", "area: vk-video"]
+body:
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Preflight
+      options:
+        - label: I searched existing issues and didn't find a duplicate.
+          required: true
+
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivation
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed API / behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Which part of vk-video does this touch?
+      multiple: true
+      options:
+        - H.264 decode
+        - H.264 encode
+        - H.265 decode
+        - H.265 encode
+        - Parser / bitstream handling
+        - Vulkan wrapper / initialization
+        - Other

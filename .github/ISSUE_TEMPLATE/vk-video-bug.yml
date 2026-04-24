@@ -1,0 +1,86 @@
+name: "vk-video: Bug report"
+description: Report a bug in the vk-video Rust crate.
+labels: ["bug", "area: vk-video"]
+body:
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Preflight
+      options:
+        - label: I searched existing issues and didn't find a duplicate.
+          required: true
+        - label: I am on the latest `master` (or can reproduce the bug on it).
+          required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: vk-video version / commit
+      placeholder: "e.g. 0.2.0 or commit 41ce99ec"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: OS
+      options:
+        - Linux
+        - Windows
+    validations:
+      required: true
+
+  - type: input
+    id: gpu
+    attributes:
+      label: GPU + driver version
+      placeholder: "e.g. NVIDIA RTX 4070, driver 560.35.03"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: codec
+    attributes:
+      label: Codec
+      multiple: true
+      options:
+        - H.264 decode
+        - H.264 encode
+        - H.265 decode
+        - H.265 encode
+    validations:
+      required: true
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: validation_layers
+    attributes:
+      label: Vulkan validation layer output
+      description: Output from running with validation layers enabled. Optional but very useful.
+      render: shell
+
+  - type: textarea
+    id: bitstream
+    attributes:
+      label: Sample bitstream
+      description: Attach or link to a sample bitstream that triggers the bug. Drag-and-drop files into this field. Optional but very helpful.

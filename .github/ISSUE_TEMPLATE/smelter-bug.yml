@@ -1,0 +1,91 @@
+name: "Smelter: Bug report"
+description: Report a bug in Smelter (not vk-video).
+labels: ["bug", "area: smelter"]
+body:
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Preflight
+      options:
+        - label: I searched existing issues and didn't find a duplicate.
+          required: true
+        - label: I am on the latest `master` (or can reproduce the bug on it).
+          required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Smelter version / commit
+      placeholder: "e.g. v0.4.0 or commit 41ce99ec"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: usage
+    attributes:
+      label: How are you using Smelter?
+      options:
+        - Native server (standalone binary, HTTP API)
+        - TypeScript SDK
+        - WASM (smelter-render in the browser)
+        - Other (describe below)
+    validations:
+      required: true
+
+  - type: textarea
+    id: protocols
+    attributes:
+      label: Input / output protocols used
+      description: e.g. RTP, RTMP, WHIP, MP4, HLS, DeckLink, web renderer. Skip if not relevant.
+
+  - type: input
+    id: os
+    attributes:
+      label: OS
+      placeholder: "e.g. Linux (Arch, kernel 6.19), macOS 15.2, Windows 11"
+    validations:
+      required: true
+
+  - type: input
+    id: gpu
+    attributes:
+      label: GPU / graphics backend
+      description: Relevant for rendering bugs. Skip if not applicable.
+
+  - type: checkboxes
+    id: features
+    attributes:
+      label: Feature flags enabled
+      options:
+        - label: web-renderer
+        - label: decklink
+        - label: vk-video
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      description: Minimal steps. Attach scene JSON, request bodies, or sample inputs where relevant.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: Relevant Smelter logs. Set `SMELTER_LOGGER_LEVEL=debug` if useful.
+      render: shell
